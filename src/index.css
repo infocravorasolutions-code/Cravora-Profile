@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Day Mode - Vibrant & Clean */
+    --background: 270 20% 98%;
+    --foreground: 270 60% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 60% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 60% 15%;
+
+    --primary: 270 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 30% 96%;
+    --secondary-foreground: 270 60% 40%;
+
+    --muted: 270 20% 96%;
+    --muted-foreground: 270 15% 45%;
+
+    --accent: 270 50% 94%;
+    --accent-foreground: 270 60% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 90%;
+    --input: 270 20% 90%;
+    --ring: 270 70% 55%;
+
+    --radius: 1rem;
+
+    /* Glassmorphism Tokens */
+    --glass-bg: 0 0% 100%;
+    --glass-border: 270 20% 90%;
+    --glass-opacity: 0.7;
+    --glass-blur: 16px;
+
+    /* Custom Tokens */
+    --glow-purple: 270 70% 55%;
+    --gradient-start: 260 80% 60%;
+    --gradient-end: 280 70% 50%;
+    --shadow-color: 270 60% 55%;
+  }
+
+  .dark {
+    /* Night Mode - Deep Space & Neon */
+    --background: 270 50% 4%;
+    --foreground: 270 10% 98%;
+
+    --card: 270 45% 8%;
+    --card-foreground: 270 10% 95%;
+
+    --popover: 270 45% 8%;
+    --popover-foreground: 270 10% 95%;
+
+    --primary: 270 80% 70%;
+    --primary-foreground: 270 50% 8%;
+
+    --secondary: 270 40% 12%;
+    --secondary-foreground: 270 20% 90%;
+
+    --muted: 270 35% 10%;
+    --muted-foreground: 270 15% 60%;
+
+    --accent: 270 45% 15%;
+    --accent-foreground: 270 20% 95%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 35% 15%;
+    --input: 270 35% 15%;
+    --ring: 270 80% 70%;
+
+    /* Glassmorphism Tokens - Dark */
+    --glass-bg: 270 45% 8%;
+    --glass-border: 270 35% 20%;
+    --glass-opacity: 0.6;
+    --glass-blur: 20px;
+
+    /* Custom Tokens */
+    --glow-purple: 270 90% 75%;
+    --gradient-start: 260 90% 70%;
+    --gradient-end: 290 80% 55%;
+    --shadow-color: 270 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+
+  /* Glass Card Utility */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-md transition-all duration-300;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .dark .glass-card {
+    @apply border-white/10 bg-black/20;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-card:hover {
+    @apply border-primary/50 bg-white/20;
+    transform: translateY(-2px);
+  }
+
+  .dark .glass-card:hover {
+    @apply border-primary/50 bg-white/5;
+  }
+
+  /* Profile Image Ring */
+  .profile-ring {
+    @apply relative inline-block rounded-full p-[3px];
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+    box-shadow: 0 0 20px -5px hsl(var(--glow-purple) / 0.5);
+  }
+
+  .profile-ring img {
+    @apply rounded-full border-4 border-background bg-background object-cover;
+  }
+
+  /* Interactive Elements */
+  .btn-hover {
+    @apply active:scale-95 transition-all duration-200;
+  }
+
+  /* Theme Toggle */
+  .theme-toggle {
+    @apply fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-card/80 backdrop-blur-md border border-border/50 shadow-lg flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110 active:scale-95;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+}
